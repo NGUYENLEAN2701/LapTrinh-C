@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+  printf("Hello, World!\n");
+  return 0;
+}
+
+ký tự '/n' để xuống dòng
+
+return 0; vì là hàm int main() cần giá trị trả về....
+
+->#include <stdio.h>
+
+->printf("Chào mọi người!");
+ 

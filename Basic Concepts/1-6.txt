@@ -1,0 +1,9 @@
+Giới thiệu C
+
+C là một ngôn ngữ lập trình có mục đích chung đã tồn tại được gần 50 năm.
+C đã được sử dụng để viết mọi thứ từ hệ điều hành (bao gồm cả Windows và nhiều chương trình khác) đến các chương trình phức tạp như trình thông dịch Python, Git, cơ sở dữ liệu Oracle, v.v.
+Tính linh hoạt của C là do thiết kế. Nó là một ngôn ngữ cấp thấp có liên quan chặt chẽ đến cách thức hoạt động của máy móc trong khi vẫn dễ học.
+
+Hiểu cách bộ nhớ máy tính hoạt động là một khía cạnh quan trọng của ngôn ngữ lập trình C
+
+->C is a: General purpose programming language
