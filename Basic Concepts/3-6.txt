@@ -1,0 +1,62 @@
+C hỗ trợ các kiểu dữ liệu cơ bản sau:
+int : integer , một số nguyên.
+float : dấu phẩy động, một số có phần thập phân.
+double: giá trị dấu chấm động chính xác kép.
+char : ký tự đơn .
+
+
+->Kiểu nào sau đây là kiểu dữ liệu hợp lệ trong C? int, float, double, char
+
+
+Một biến là tên cho một vùng trong bộ nhớ.
+Tên của một biến (còn được gọi là mã định danh ) phải bắt đầu bằng chữ cái hoặc dấu gạch dưới và có thể bao gồm các chữ cái, chữ số và ký tự gạch dưới .
+Các quy ước đặt tên biến là khác nhau, tuy nhiên, việc sử dụng các chữ cái viết thường có dấu gạch dưới để phân tách các từ là điều phổ biến (solid_case).
+Các biến cũng phải được khai báo như một kiểu dữ liệu trước khi chúng được sử dụng.
+
+Giá trị của một biến đã khai báo được thay đổi bằng một câu lệnh gán .
+Ví dụ: các câu lệnh sau khai báo một biến số nguyên my_var và sau đó gán cho nó giá trị 42:
+
+int my_var; 
+my_var = 42;
+
+<=> int my_var = 42;
+
+Ngôn ngữ lập trình C phân biệt chữ hoa chữ thường , vì vậy my_Variable và my_variable là hai định danh khác nhau.
+
+
+->Fill in the blanks to declare an integer variable num and assign it the value 42.
+int num;
+num = 42;
+
+
+Constants- Một hằng số lưu trữ một giá trị không thể thay đổi từ lần gán ban đầu của nó.
+Bằng cách sử dụng các hằng số có tên có nghĩa, mã sẽ dễ đọc và dễ hiểu hơn.
+Để phân biệt hằng số với biến, một thực tế phổ biến là sử dụng các định danh viết hoa.
+
+
+#include <stdio.h>
+
+int main() {
+  const double PI = 3.14;
+  printf("%f", PI);
+    
+  return 0;
+}
+
+Một cách khác để xác định hằng số là sử dụng chỉ thị tiền xử lý #define .
+Các #define sử dụng chỉ thị macro để xác định giá trị không đổi.
+Ví dụ:
+
+#include <stdio.h>
+
+#define PI 3.14
+
+int main() {
+  printf("%f", PI);
+  return 0;
+}
+
+-> 
+const double PI = 3.14;
+
+

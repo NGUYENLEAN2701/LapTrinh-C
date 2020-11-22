@@ -1,0 +1,12 @@
+dùng /*  anything  */
+hoặc // only this line
+ để comment
+
+ -> 
+/* This is a
+* comment that spans
+* multiple lines
+*/
+ 
+-> 
+// this is a single-line comment

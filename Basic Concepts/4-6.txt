@@ -1,0 +1,65 @@
+Dùng một số hàm để nhập dữ liệu:
+
+getchar(); nhập vào 1 ký tự
+
+gets(s); nhập vào 1 chuỗi ký tự
+
+scanf("%d", &a); nhập vào 1 số int
+
+ scanf("%d %d", &a, &b); nhập nhiều số
+
+ ->char c = getchar();
+
+
+ output dùng các hàm:
+
+ putchar(a);
+ puts(s);
+ printf();
+
+ ->char c ='s';
+ putchar(c);
+
+
+
+ int x, y;
+char text[20];
+
+scanf("%2d %d %*f %5s", &x, &y, text);
+/* input: 1234  5.7  elephant */
+printf("%d  %d  %s", x, y, text);
+/* output: 12  34  eleph */ 
+
+
+->int num1, num2;
+scanf("%d %d", &num1, &num2);
+
+
+
+Escape sequences begin with a backslash \:
+\n new line
+\t horizontal tab
+\\ backslash
+\b backspace
+\' single quote
+\" double quote
+
+
+example:
+
+printf("Color: %s, Number: %d, float: %5.2f \n", "red", 42, 3.14159);
+/* Color: red, Number: 42, float:  3.14  */
+
+printf("Pi = %3.2f", 3.14159); 
+/* Pi = 3.14 */
+
+printf("Pi = %8.5f", 3.14159); 
+/* Pi =   3.14159 */
+
+printf("Pi = %-8.5f", 3.14159); 
+/* Pi = 3.14159 */
+
+printf("There are %d %s in the tree.", 22, "apples");
+/* There are 22 apples in the tree. */ 
+
+->printf("%3.2f", 4.4289743);
