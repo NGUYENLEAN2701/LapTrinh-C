@@ -35,10 +35,81 @@ else if (a=b) do something;
 else do something;
 
 
-=>
+->
 int people = 12;
 if (people >= 10)
     printf("More than 10.\n");
  else
     printf("Less than 10.\n");
 
+
+
+điểu kiện nhanh:
+
+#include <stdio.h>
+
+int main() {
+  int y;
+  int x = 3;
+
+  y = (x >= 5) ?  5 : x;
+
+/* This is equivalent to:
+  if (x >= 5)
+    y = 5;
+  else
+    y = x;
+*/
+
+  return 0;
+}
+
+
+->int x=12;
+int y = (x>=5)?8:x;
+
+
+dieu kieu phia trong dieu kien:
+if(){
+  if(){
+
+  }else
+}
+
+
+->int x = 37;
+if (x > 22) { 
+  if (x > 31) {
+      printf("x is greater than 22 and 31");
+  }
+}
+
+
+dieu kien else if:
+
+
+int score = 89;
+  
+if (score >= 90)
+  printf("%s", "Top 10%\n");
+else if (score >= 80)
+  printf("%s", "Top 20%\n");
+else if (score > 75)
+  printf("%s", "You passed.\n");
+else
+  printf("%s", "You did not pass.\n"); 
+
+
+
+->
+int num = -14;
+if (num > 0)
+  printf("positive");
+else if (num < 0)
+  printf("negative"); 
+else
+  printf("zero");
+
+
+
+  
