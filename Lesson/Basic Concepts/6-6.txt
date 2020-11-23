@@ -1,0 +1,65 @@
+#include <stdio.h>
+
+
+int main() {
+    int a=7,b=3;
+    printf("a/b = %d\n",(a/b)); 
+    printf("a%%b = %d\n",(a%b));
+    printf("a*b = %d\n",(a*b));
+    printf("a-b = %d\n",(a-b));
+    printf("a+b = %d\n",(a+b));
+    printf("a/b = %f\n",(float)(a/b));
+    return 0;
+}
+
+a/b = 2
+a%b = 1
+a*b = 21
+a-b = 4
+a+b = 10
+
+
+->2
+->int x = 6;
+int y = 4;
+int z = 2;
+int res = x - y + z;
+
+
+ép kiểu
+
+->
+average = (float) total / count;
+
+
+phép toán nhanh
+
+int x = 2;
+
+x += 1;  // 3 <=> x=x+1;
+x -= 1;  // 2 <=> x=x-1;
+x *= 3;  // 6 <=> x=x*3;
+x /= 2;  // 3 <=> x=x/2;
+x %= 2;  // 1 <=> x=x%2;
+x += 3 * 2;  // 7 <=> x=x+6;
+
+->int num1 = 8;
+int num2 = 42;
+num1 += num2;
+
+
+z--;  /* decrement z by 1 */
+y++; /* increment y by 1 */
+
+
+z = 3;
+x = z--;  /* assign 3 to x, then decrement z to 2 */
+y = 3;
+x = ++y;  /* increment y to 4, then assign 4 to x */
+
+->
+int x = 8;
+int y = 7;
+x++;
+x+= y--;
+//x=16

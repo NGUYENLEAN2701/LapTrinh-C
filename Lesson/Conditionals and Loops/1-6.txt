@@ -1,0 +1,44 @@
+Cách dùng điều kiện:
+
+#include <stdio.h>
+
+int main() {
+  int score = 89;
+  
+  if (score > 75)
+    printf("You passed.\n");
+    
+  return 0;
+}
+
+
+->int a = 13;
+int b = 12;
+if (a > b) {
+  printf("hello");
+}
+
+cách dùng dấu
+<  nhỏ hơn
+<= nhỏ hơn hoặc bằng
+>  lớn hơn
+>= lớn hơn hoặc bằng
+== bằng
+!= Không bằng
+
+if(a) do something; //điều kiện ở đây là a khác 0
+
+->==
+
+if (a>b) do something; 
+else if (a=b) do something;
+else do something;
+
+
+=>
+int people = 12;
+if (people >= 10)
+    printf("More than 10.\n");
+ else
+    printf("Less than 10.\n");
+

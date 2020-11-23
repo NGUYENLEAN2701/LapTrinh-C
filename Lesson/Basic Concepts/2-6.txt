@@ -13,3 +13,6 @@ return 0; vì là hàm int main() cần giá trị trả về....
 
 ->printf("Chào mọi người!");
  
+
+
+ 

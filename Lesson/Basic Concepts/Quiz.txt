@@ -1,0 +1,11 @@
+->The main() function
+-> printf ("I love C");
+->//single line comment
+->int sum = a + b;
+-> 
+#include <stdio.h>
+int main() {
+  int v = 42135;
+  printf("%d",v); 
+  return 0;
+}
