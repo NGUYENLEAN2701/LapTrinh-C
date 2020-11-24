@@ -1,21 +1,43 @@
-cách dùng switch-case:
 
+dieu kieu phia trong dieu kien:
+if(){
+  if(){
 
-
-int num = 3;
-
-switch (num) {
-case 1:
-printf("One\n");
-break;   
-case 2:
-printf("Two\n");
-break;   
-case 3:
-printf("Three\n");
-break;   
-default:
-printf("Not 1, 2, or 3.\n");
+  }else
 }
+
+
+->int x = 37;
+if (x > 22) { 
+  if (x > 31) {
+      printf("x is greater than 22 and 31");
+  }
+}
+
+
+dieu kien else if:
+
+
+int score = 89;
+  
+if (score >= 90)
+  printf("%s", "Top 10%\n");
+else if (score >= 80)
+  printf("%s", "Top 20%\n");
+else if (score > 75)
+  printf("%s", "You passed.\n");
+else
+  printf("%s", "You did not pass.\n"); 
+
+
+
+->
+int num = -14;
+if (num > 0)
+  printf("positive");
+else if (num < 0)
+  printf("negative"); 
+else
+  printf("zero");
 
 

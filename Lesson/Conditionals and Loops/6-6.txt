@@ -1,0 +1,30 @@
+int i;
+int max = 10;
+  
+for (i = 0; i < max; i++) {
+  printf("%d\n", i);
+}
+
+->int x;
+int end = 5;
+ 
+for (x = 0; x <= end; x++) {
+  printf("%d\n", x);
+}
+
+
+
+
+lồng vòng lặp
+
+
+int i, j;
+int table = 10;
+int max = 12;
+
+for (i = 1; i <= table; i++) {
+  for (j = 0; j <= max; j++) {
+    printf("%d x %d = %d\n", i, j, i*j);
+  }
+  printf("\n"); /* blank line between tables */ 
+}

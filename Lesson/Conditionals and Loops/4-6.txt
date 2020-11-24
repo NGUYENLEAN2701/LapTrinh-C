@@ -1,0 +1,38 @@
+điều kiện kết hợp:
+
+AND <=> &&
+
+
+if (n > 0 && n <= 100)
+  printf("Range (1 - 100).\n"); 
+
+
+
+
+OR <=> ||
+
+
+if (n == 999 || (n > 0 && n <= 100))
+  printf("Input valid.\n"); 
+
+
+->if (n == 'x' || n == 'X') printf("Roman");
+
+
+
+dấu '!':
+
+!true = false;
+
+
+if (!(n == 'x' || n == 'X'))
+  printf("Roman numeral is not 10.\n"); 
+
+
+  ->int x = 3;
+  int y = 8;
+  if(!(x > 2 || y < 0)) 
+    printf("true");
+  else 
+    printf("false");
+    //false

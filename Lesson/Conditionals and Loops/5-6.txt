@@ -1,0 +1,83 @@
+vòng lặp  while(): tiếp tục thực hiện công việc khi điều kiện còn đúng
+
+
+
+
+#include <stdio.h>
+
+int main() {
+  int count = 1;
+  
+  while (count < 8) {
+    printf("Count = %d\n", count);
+    count++;
+  }
+    
+  return 0;
+}
+
+
+->int n = 0;
+ while (n < 5) {
+  printf("hello\n");
+  n++;
+}
+
+
+
+
+vòng lập do{}while() : thực hiện công việc xong kiểm tra điều kiện... còn đúng thì tiếp...
+
+
+#include <stdio.h>
+
+int main() {
+  int count = 1;
+  
+  do {
+    printf("Count = %d\n", count);
+    count++;
+  } while (count < 8);
+    
+  return 0;
+}
+
+->int count = 1;
+do {
+  printf("%d\n", count);
+  count++;
+} while (count < 8);
+/*
+Count = 1
+Count = 2
+Count = 3
+Count = 4
+Count = 5
+Count = 6
+Count = 7
+*/
+
+
+
+dùng break; để thoát khỏi vòng lặp
+
+
+int num = 5;
+  
+while (num > 0) {
+  if (num == 3)
+    break;
+  printf("%d\n", num);
+  num--;
+}
+
+
+->int num = 5;
+while (num > 0) {
+  if(num == 2)
+    break;
+    printf("%d\n", num);
+    num--;
+}
+
+
