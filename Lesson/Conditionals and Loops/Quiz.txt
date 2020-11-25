@@ -1,0 +1,45 @@
+->
+int age;
+scanf("%d", &age);
+ if (age > 21) {
+  printf("drinks allowed");
+} 
+else if (age < 10) {
+  printf("study math");
+}
+
+
+->int c = 0;
+ do {
+  printf("%d", c);
+  c++;
+} while (c <=  5);
+ 
+
+
+
+ ->for (int i = 0; i < 3; ++i) {
+  printf("SoloLearn");
+}
+
+
+->
+ 
+switch (num) {
+  case 1: 
+    printf("one");
+    break;
+  case 2: 
+    printf("two");
+    break;
+  case 3:
+    printf("three");
+    break;
+}
+
+
+->
+int age = 25;
+ 
+if (age > 17 && age < 99) 
+  printf("I can drive");

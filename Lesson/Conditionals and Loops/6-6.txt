@@ -28,3 +28,6 @@ for (i = 1; i <= table; i++) {
   }
   printf("\n"); /* blank line between tables */ 
 }
+
+->5
+
