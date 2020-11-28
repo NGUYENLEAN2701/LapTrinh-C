@@ -1,0 +1,15 @@
+hàm main() là hàm chính
+
+khai báo hàm:
+
+return_type function_name (tham số); 
+
+
+ví dụ:
+
+int MaxNum(int a[]){
+    int Max;
+    //code
+
+    return Max;
+}
