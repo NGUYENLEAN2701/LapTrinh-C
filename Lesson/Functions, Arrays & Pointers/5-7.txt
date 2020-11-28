@@ -46,3 +46,57 @@ Con trỏ là một biến chứa địa chỉ của một biến khác. Nói c�
 Con trỏ được khai báo bằng ký hiệu * và có dạng:
 
 pointer_type *identifier 
+
+
+
+pointer_type là kiểu dữ liệu mà con trỏ sẽ trỏ tới. Kiểu dữ liệu con trỏ thực tế là một số thập lục phân, nhưng khi khai báo một con trỏ , bạn phải chỉ ra kiểu dữ liệu mà nó sẽ trỏ tới.
+Dấu hoa thị * khai báo một con trỏ và sẽ xuất hiện bên cạnh số nhận dạng được sử dụng cho biến con trỏ .
+Chương trình sau giải thích các biến, con trỏ và địa chỉ:
+
+int j = 63;
+int *p = NULL;
+p = &j; 
+
+printf("The address of j is %x\n", &j);
+printf("p contains address %x\n", p);
+printf("The value of j is %d\n", j);
+printf("p is pointing to the value %d\n", *p); 
+
+Có một số điều cần lưu ý về chương trình này:
+• Các con trỏ phải được khởi tạo thành NULL cho đến khi chúng được gán một vị trí hợp lệ
+• Các con trỏ có thể được gán địa chỉ của một biến bằng cách sử dụng dấu và & 
+• Để xem con trỏ đang trỏ tới cái gì , hãy sử dụng lại dấu *, như trong * p 
+Trong trường hợp này, * được gọi là toán tử hướng dẫn hoặc tham chiếu . Quá trình này được gọi là dereferencing
+
+Một số thuật toán sử dụng một con trỏ tới một con trỏ . Kiểu khai báo biến này sử dụng ** và có thể được gán địa chỉ của một con trỏ khác , như trong:
+int x = 12;
+int *p = NULL;
+int ** ptr = NULL;
+p = & x;
+ptr = & p;
+
+->int var = 42;
+int *ptr = &var;
+
+
+
+
+Con trỏ trong Biểu thức
+
+Con trỏ có thể được sử dụng trong các biểu thức giống như bất kỳ biến nào. Các toán tử số học có thể được áp dụng cho bất cứ thứ gì mà con trỏ trỏ tới.
+Ví dụ:
+
+int x = 5;
+int y;
+int *p = NULL;
+p = &x;
+
+y = *p + 2; /* y is assigned 7 */
+y += *p;     /* y is assigned 12 */
+*p = y;       /* x is assigned 12 */
+(*p)++;      /* x is incremented to 13 */
+
+printf("p is pointing to the value %d\n", *p); 
+
+->Pointers can be used in expressions just as any variable.
+

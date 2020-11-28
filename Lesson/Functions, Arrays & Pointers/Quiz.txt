@@ -1,0 +1,41 @@
+-> float my_func(int a, int b);
+
+->
+void print(int n) {
+    if (n < 0) return;
+    printf("%d", n); 
+    print(n - 1);
+}
+
+
+->
+int arr[] = {1, 2, 3, 4, 5};
+for (int x = 0; x < 5; x++) {
+  printf("%d", arr[x]);
+}
+
+->
+int num = 42;
+int * ptr = &num;
+*ptr *= 2;
+
+->
+void swap(int* a, int* b) {
+  int temp = *a;
+  *a = *b;
+  *b = temp;
+}
+
+->
+int * test() {
+  static int x[4];
+  for(int i=0;i<4;i++){
+    x[i] = i%2;
+  }
+  return x;
+} 
+
+int main() {
+  int * arr = test();
+  printf("%d", *(arr+3)); //1
+}
