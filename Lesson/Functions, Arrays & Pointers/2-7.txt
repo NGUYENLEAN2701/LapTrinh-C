@@ -1,0 +1,30 @@
+Recursive Functions (hàm đệ quy)
+
+Một thuật toán để giải quyết một vấn đề có thể được thực hiện tốt nhất bằng cách sử dụng một quá trình gọi là đệ quy . 
+Hãy xem xét giai thừa của một số, thường được viết là 5! = 5 * 4 * 3 * 2 * 1.
+Phép tính này cũng có thể được coi là tính toán lặp lại num * (num -1) cho đến khi num bằng 1.
+
+ví dụ:
+
+
+#include <stdio.h>
+
+//function declaration
+int factorial(int num);
+
+int main() {    
+  int x = 5;
+
+  printf("The factorial of %d is %d\n", x, factorial(x));
+ 
+  return 0;
+}
+
+//function definition
+int factorial(int num) {
+  
+  if (num == 1)  /* base case */
+    return (1);
+  else
+    return (num * factorial(num - 1));
+} 

@@ -1,9 +1,23 @@
 #include <stdio.h>
-#define A printf("Hello World!")
+
+//function declaration
+int factorial(int num);
+
 int main()
 {
-    if (A)
-    {
-        //printf("Cộng Hòa Xã Hội Chủ Nghĩa Việt Nam");
-    }
+  int x = 0;
+
+  printf("The factorial of %d is %d\n", x, factorial(x));
+
+  return 0;
+}
+
+//function definition
+int factorial(int num)
+{
+
+  if (num <= 1) /* base case */
+    return (1);
+  else
+    return (num * factorial(num - 1));
 }
