@@ -1,0 +1,35 @@
+Arrays in C:
+
+Cách sử dụng mảng trong C
+
+
+int test_scores[25]; /* An array size 25 */ 
+
+float prices[5] = {3.2, 6.55, 10.49, 1.25, 0.99}; 
+
+-> int x[4] = {1, 2, 3, 4};
+
+
+in phần tử trong dãy:
+
+->in phần tử thứ 2:
+int x[5] = {20, 45, 16, 18, 22};
+printf("%d", x[1]);
+
+
+sử dụng vòng lặp để thao tác với dãy
+
+ví dụ:
+int a[10];
+int k;
+
+for (k = 0; k < 10; k++) {
+  a[k] = k * 10;
+} 
+
+
+->int arr[5] = {1, 2, 3, 4, 5};
+ 
+for (int x = 0; x < 5; x++) {
+  printf("%d", arr[x]);
+}

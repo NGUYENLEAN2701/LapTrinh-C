@@ -1,0 +1,48 @@
+Pointer : Con Trỏ
+
+Sử dụng bộ nhớ:
+C được thiết kế để trở thành một ngôn ngữ cấp thấp có thể dễ dàng truy cập các vị trí bộ nhớ và thực hiện các hoạt động liên quan đến bộ nhớ.
+Ví dụ, 
+hàm scanf () đặt giá trị được nhập bởi người dùng tại vị trí hoặc địa chỉ của biến. 
+Điều này được thực hiện bằng cách sử dụng ký hiệu &.
+
+& num là địa chỉ của biến num .
+
+Địa chỉ bộ nhớ được cung cấp dưới dạng số thập lục phân . Thập lục phân hoặc hex , là một hệ thống số cơ sở-16 mà sử dụng chữ số từ 0 đến 9 và các chữ cái từ A đến F (16 ký tự) để đại diện cho một nhóm bốn chữ số nhị phân có thể có một giá trị từ 0 đến 15.
+Nó là dễ dàng hơn để đọc một số hex dài 8 ký tự cho 32 bit bộ nhớ hơn là để cố gắng giải mã 32 số 1 và số 0 trong hệ nhị phân.
+Chương trình sau đây hiển thị địa chỉ bộ nhớ cho các biến i và k :
+
+#include <stdio.h>
+void test(int k);
+
+int main() {
+  int i = 0;
+    
+  printf("The address of i is %x\n", &i);
+  test(i);
+  printf("The address of i is %x\n", &i);
+  test(i);
+
+  return 0;
+}
+
+void test(int k) {
+  printf("The address of k is %x\n", &k);
+}
+//%x để hiển thị hex
+
+
+->
+int var = 42;
+printf("%x", &var)
+
+
+
+Con trỏ là gì?
+
+Con trỏ rất quan trọng trong lập trình C vì chúng cho phép bạn dễ dàng làm việc với các vị trí bộ nhớ.
+Chúng là nền tảng cho mảng, chuỗi cũng như các cấu trúc dữ liệu và thuật toán khác.
+Con trỏ là một biến chứa địa chỉ của một biến khác. Nói cách khác, nó "trỏ" đến vị trí được gán cho một biến và có thể gián tiếp truy cập vào biến đó.
+Con trỏ được khai báo bằng ký hiệu * và có dạng:
+
+pointer_type *identifier 

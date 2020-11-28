@@ -1,0 +1,39 @@
+Mảng hai chiều:
+
+
+int a[2][3] = {
+  {3, 2, 6},
+  {4, 5, 20}
+}; 
+
+
+->int arr[2][5] : có 10 phần tử
+
+in phần tử trong mảng 2 chiều:
+
+
+int a[2][3] = {
+  {3, 2, 6},
+  {4, 5, 20}
+};
+int k, j;
+/* display array contents */
+for (k = 0; k < 2; k++) {
+  for (j = 0; j < 3; j++) {
+    printf(" %d", a[k][j]);
+  }
+  printf("\n");
+}
+
+->int a[2][3] = {
+  {3, 2, 6},
+  {4, 5, 20}
+};
+
+int sum=0;
+for(int k=0;k<2;k++){
+  for(int j=0; j<3; j++){ 
+     sum+=a[k][j];
+  }
+}
+printf("Sum: %d", sum);
