@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int findNumber(int n);
 int main()
 {
