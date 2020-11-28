@@ -3,7 +3,7 @@
 int findNumber(int n);
 int main()
 {
-    int n=12000901;
+    int n=1000901;
     int N=findNumber(n);
     printf("%d",N);
     return 0;

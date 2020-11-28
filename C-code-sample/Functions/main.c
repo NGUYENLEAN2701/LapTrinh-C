@@ -1,6 +1,6 @@
 #include <stdio.h>
 #define A printf("Hello World!")
-void main()
+int main()
 {
     if (A)
     {
