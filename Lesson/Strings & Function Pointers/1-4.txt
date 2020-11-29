@@ -1,0 +1,102 @@
+Strings
+Một string trong C là một mảng các ký tự mà kết thúc với một NULL '\ 0' .
+Một khai báo string có thể được thực hiện theo nhiều cách, mỗi cách có những cân nhắc riêng.
+
+char str_name[str_len] = "string"; 
+
+
+Điều này tạo ra một chuỗi có tên str_name của các ký tự str_len và khởi tạo nó thành giá trị " string ".
+Khi bạn cung cấp một chuỗi ký tự để khởi tạo chuỗi , trình biên dịch sẽ tự động thêm ký tự NULL '\ 0' vào mảng char . Vì lý do này, bạn phải khai báo kích thước mảng dài hơn độ dài chuỗi dự kiến ít nhất một ký tự . Các câu lệnh dưới đây tạo chuỗi bao gồm ký tự NULL . Nếu khai báo không bao gồm
+
+kích thước mảng char , sau đó nó sẽ được tính dựa trên độ dài của chuỗi trong lần khởi tạo cộng với một cho '\ 0':
+
+char str1[6] = "hello";
+char str2[ ] = "world";  /* size 6 */
+
+
+A string can also be declared as a set of characters:
+
+char str3[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
+
+char str4[ ] = {'h', 'e', 'l', 'l', 'o', '\0'}; /* size 6 */ 
+
+
+With this approach, the NULL character must be added explicitly. Note that the characters are enclosed in single quotation marks.
+As with any array, the name of a string acts as a pointer.
+A string literal is a text enclosed in double quotation marks.
+A character, such as 'b', is indicated by single quotation marks and cannot be treated as a string.
+
+A string pointer declaration such as char *str = "stuff"; is considered a constant and cannot be changed from its initial value.
+
+To safely and conveniently operate with strings, you can use the Standard Library string functions shown below. Don't forget to include <string.h>.
+strlen() - get length of a string
+strcat() - merge two strings
+strcpy() - copy one string to another
+strlwr() - convert string to lower case
+strupr() - convert string to upper case
+strrev() - reverse string
+strcmp() - compare two strings
+
+->char str[] = "Hello, world!";
+
+
+String Input
+
+Các chương trình thường tương tác, yêu cầu người dùng nhập liệu.
+Để lấy một dòng văn bản hoặc các chuỗi từ người dùng, C cung cấp scanf (), được (), và fgets () chức năng.
+Bạn có thể sử dụng scanf () để đọc đầu vào theo các mã định dạng.
+
+ví dụ:
+char first_name[25];
+int age;
+printf("Enter your first name and age: \n");
+scanf("%s %d", first_name, &age); 
+
+
+Khi scanf () được sử dụng để đọc một chuỗi , không cần & để truy cập địa chỉ biến vì tên mảng hoạt động như một con trỏ .
+scanf () ngừng đọc đầu vào khi nó đạt đến khoảng trắng. Để đọc một chuỗi có dấu cách, hãy sử dụng hàm get () . Nó đọc đầu vào cho đến khi đạt đến dòng mới kết thúc (phím Enter được nhấn).
+Ví dụ:
+char full_name[50];
+printf("Enter your full name: ");
+gets(full_name);
+
+
+Một thay thế an toàn hơn cho get () là fgets () , đọc tối đa một số ký tự được chỉ định. Cách tiếp cận này giúp ngăn chặn tràn bộ đệm , xảy ra khi mảng chuỗi không đủ lớn cho văn bản đã nhập.
+
+ví dụ:
+char full_name[50];
+printf("Enter your full name: ");
+fgets(full_name, 50, stdin);
+
+Các đối số fgets () là tên chuỗi , số ký tự cần đọc và một con trỏ đến nơi bạn muốn đọc chuỗi từ đó. stdin có nghĩa là đọc từ đầu vào chuẩn , đó là bàn phím.
+Một điểm khác biệt giữa được và fgets là xuống dòng nhân vật được lưu trữ bởi fgets .
+
+-> 
+char str[20];
+scanf("%s", str);
+
+String Output
+Đầu ra chuỗi được xử lý bằng các hàm fputs (), put () và printf ().
+Các fputs () đòi hỏi phải có tên của chuỗi và một con trỏ đến nơi mà bạn muốn in các chuỗi . Để in ra màn hình, hãy sử dụng stdout đề cập đến đầu ra tiêu chuẩn .
+Ví dụ:
+#include <stdio.h>
+int main()
+{
+  char city[40];
+  printf("Enter your favorite city: ");
+  gets(city);
+  // Note: for safety, use
+  // fgets(city, 40, stdin);
+
+  fputs(city, stdout);
+  printf(" is a fun city.");
+
+  return 0;
+}
+
+->
+ 
+char name[] = "John Smith";
+ fputs(name, stdout);
+
+ 

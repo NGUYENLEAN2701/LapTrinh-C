@@ -1,0 +1,41 @@
+Con trỏ hàm
+
+Vì con trỏ có thể trỏ đến một địa chỉ trong bất kỳ vị trí bộ nhớ nào, chúng cũng có thể trỏ đến điểm bắt đầu của mã thực thi.
+Con trỏ đến các hàm, hoặc con trỏ hàm , trỏ tới mã thực thi cho một hàm trong bộ nhớ. Con trỏ hàm có thể được lưu trữ trong một mảng hoặc được truyền dưới dạng đối số cho các hàm khác. Khai báo con trỏ
+
+hàm sử dụng * giống như bạn làm với bất kỳ con trỏ nào :
+
+return_type (*func_name)(parameters) 
+
+
+
+Các dấu ngoặc xung quanh (* func_name) là quan trọng. Nếu không có chúng, trình biên dịch sẽ nghĩ rằng hàm đang trả về một con trỏ .
+
+Sau khi khai báo con trỏ hàm , bạn phải gán nó cho một hàm. Chương trình ngắn sau đây khai báo một hàm, khai báo một con trỏ hàm , gán con trỏ hàm cho hàm, sau đó gọi hàm thông qua con trỏ :
+
+#include <stdio.h>
+void say_hello(int num_times); /* function */
+
+int main() {
+  void (*funptr)(int);  /* function pointer */
+  funptr = say_hello;  /* pointer assignment */
+  funptr(3);  /* function call */
+    
+  return 0;
+}
+
+void say_hello(int num_times) {
+  int k;
+  for (k = 0; k < num_times; k++)
+    printf("Hello\n");
+}
+
+
+Tên hàm trỏ đến phần bắt đầu của mã thực thi, giống như tên mảng trỏ đến phần tử đầu tiên của nó. Do đó, mặc dù các câu lệnh như funptr = & say_hello và (* funptr) (3) là đúng, nhưng không cần thiết phải bao gồm toán tử địa chỉ & và toán tử điều hướng * trong phép gán hàm và gọi hàm.
+
+
+->
+int sum(int a, int b) {
+     return a + b;
+}
+int (*psum)(int, int) = sum;

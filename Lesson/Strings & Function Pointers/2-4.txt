@@ -1,0 +1,106 @@
+The sprintf and sscanf Functions
+
+Một chuỗi được định dạng có thể được tạo bằng hàm sprintf () .
+Điều này rất hữu ích để xây dựng một chuỗi từ các kiểu dữ liệu khác.
+
+
+#include <stdio.h>
+int main()
+{
+  char info[100];
+  char dept[ ] = "HR";
+  int emp = 75;
+  sprintf(info, "The %s dept has %d employees.", dept, emp);
+  printf("%s\n", info);
+
+  return 0;
+}
+
+
+
+Một hàm hữu ích khác là sscanf () để quét một chuỗi các giá trị. Hàm đọc các giá trị từ một chuỗi và lưu trữ chúng tại các địa chỉ biến tương ứng.
+
+
+#include <stdio.h>
+int main()
+{
+  char info[ ] = "Snoqualmie WA 13190";
+  char city[50];
+  char state[50];
+  int population;
+  sscanf(info, "%s %s %d", city, state, &population);
+  printf("%d people live in %s, %s.", population, city, state);
+
+  return 0;
+}
+
+
+->sprintf
+
+
+dùng thư viện string.h
+
+Các hàm string.h chuỗi bổ sung bao gồm: 
+
+strncat (str1, str2, n) Nối (nối) n ký tự đầu tiên của str2 vào cuối str1 và trả về một con trỏ tới str1 . 
+
+strncpy (str1, str2, n) Sao chép n ký tự đầu tiên của str2 sang str1 . 
+
+strcmp (str1, str2) Trả về 0 khi str1 bằng str2 , nhỏ hơn 0 khi str1 < str2 và lớn hơn 0 khi str1 > str2 .
+
+strncmp (str1, str2, n) Trả về 0 khi n ký tự đầu tiên của str1 bằng n ký tự đầu tiên của str2 , nhỏ hơn 0 khi str1 < str2 và lớn hơn 0 khi str1 > str2 .
+
+strchr (str1, c) Trả về một con trỏ đến lần xuất hiện đầu tiên của char c trong str1 , hoặc NULL nếu không tìm thấy ký tự .
+
+strrchr (str1, c) Tìm kiếm ngược lại str1 và trả về một con trỏ đến vị trí của char c trongstr1 hoặc NULL nếu không tìm thấy ký tự .
+
+strstr (str1, str2) Trả về một con trỏ đến lần xuất hiện đầu tiên của str2 trong str1 hoặc NULL nếu không tìm thấy str2 .
+
+-> #include <string.h>
+
+
+Converting a String to a Number
+
+The stdio.h library contains the following functions for converting a string to a number:
+int atoi(str) Stands for ASCII to integer. Converts str to the equivalent int value. 0 is returned if the first character is not a number or no numbers are encountered.
+double atof(str) Stands for ASCII to float. Converts str to the equivalent double value. 0.0 is returned if the first character is not a number or no numbers are encountered.
+long int atol(str) Stands for ASCII to long int. Converts str to the equivalent long integer value. 0 is returned if the first character is not a number or no numbers are encountered.
+
+#include <stdio.h>
+int main()
+{
+  char input[10];
+  int num;
+    
+  printf("Enter a number: ");
+  gets(input);
+  num = atoi(input);
+
+  return 0;
+}
+
+->
+char str_num[] = "123";
+int num = atoi(str_num);
+printf("%d", num);
+
+
+chuỗi 2 chiều:
+
+char trip[3][15] = {
+  "suitcase",
+  "passport",
+  "ticket"
+};
+
+->
+ char *names[] = {
+  "John",
+  "Jill",
+  "Janet"
+};
+
+
+
+
+
