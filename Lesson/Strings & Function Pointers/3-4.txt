@@ -39,3 +39,66 @@ int sum(int a, int b) {
      return a + b;
 }
 int (*psum)(int, int) = sum;
+
+
+Mảng con trỏ hàm
+
+Một mảng của con trỏ chức năng có thể thay thế một switch hoặc nếu tuyên bố đã lựa chọn một hành động, như trong chương trình sau đây:
+
+
+#include <stdio.h>
+
+int add(int num1, int num2);
+int subtract(int num1, int num2);
+int multiply(int num1, int num2);
+int divide(int num1, int num2);
+
+int main() 
+{
+  int x, y, choice, result;
+  int (*op[4])(int, int);
+
+  op[0] = add;
+  op[1] = subtract;
+  op[2] = multiply;
+  op[3] = divide;
+  printf("Enter two integers: ");
+  scanf("%d%d", &x, &y);
+  printf("Enter 0 to add, 1 to subtract, 2 to multiply, or 3 to divide: ");
+  scanf("%d", &choice);
+  result = op[choice](x, y);
+  printf("%d", result);
+    
+  return 0;
+}
+
+int add(int x, int y) {
+  return(x + y);
+}
+
+int subtract(int x, int y) {
+  return(x - y);
+}
+
+int multiply(int x, int y) {
+  return(x * y);
+}
+
+int divide(int x, int y) {
+  if (y != 0)
+    return (x / y);
+  else
+    return 0;
+}
+
+
+
+Câu lệnh int (* op [4]) ( int , int ); khai báo mảng con trỏ hàm. Mỗi phần tử mảng phải có cùng tham số và kiểu trả về. Trong trường hợp này, các hàm được gán cho mảng có hai tham số int và trả về một int . Câu lệnh result = op [choice] (x, y); thực thi chức năng thích hợp dựa trên sự lựa chọn của người dùng. Các số nguyên đã nhập trước đó là các đối số được truyền cho hàm.
+
+
+->
+// suppose f1, f2, and f3 are declared
+void (*funcs[3])() = {f1, f2, f3};
+for (int ix = 0; ix < 3; ix++) {
+  funcs[ix](); 
+}
