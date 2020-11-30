@@ -19,3 +19,107 @@ printf("void ptr points to %c", *((char *)ptr));
 
 
 When dereferencing a void pointer, you must first type cast the pointer to the appropriate data type before dereferencing with *.
+
+->
+int num = 42;
+void *ptr =  &num;
+printf("%d", *((int *)ptr));
+
+
+
+Functions Using void Pointers
+
+Void pointers are often used for function declarations.
+
+For example:
+void * square (const void *); 
+
+Using a void * return type allows for any return type. Similarly, parameters that are void * accept any argument type. If you want to use the data passed in by the parameter without changing it, you declare it const.
+
+You can leave out the parameter name to further insulate the declaration from its implementation. Declaring a function this way allows the definition to be customized as needed without having to change the declaration.
+
+
+Sử dụng kiểu trả về void * cho phép bất kỳ kiểu trả về nào. Tương tự, các tham số void * chấp nhận bất kỳ loại đối số nào . Nếu bạn muốn sử dụng dữ liệu được truyền bởi tham số mà không thay đổi nó, bạn khai báo nó là const .
+
+Bạn có thể bỏ đi tên tham số để cách ly khai báo khỏi việc triển khai nó. Khai báo một hàm theo cách này cho phép định nghĩa được tùy chỉnh khi cần thiết mà không cần phải thay đổi khai báo.
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void *square(const void *num);
+
+int main()
+{
+    int x, sq_int;
+    x = 6;
+    sq_int = square(&x);
+    printf("%d squared is %d\n", x, sq_int);
+
+    return 0;
+}
+
+void *square(const void *num)
+{
+    int result;
+    result = (*(int *)num) * (*(int *)num);
+    return result;
+}
+
+
+This square function has been written to multiply ints, which is why the num void pointer is cast to an int. If the implementation were to be changed to allow square() to multiply floats, then only the definition need be changed without having to make changes to the declaration.
+
+
+->void * foo(void*);
+
+
+
+Function Pointers as Arguments
+
+Another way to use a function pointer is to pass it as an argument to another function.
+A function pointer used as an argument is sometimes referred to as a callback function because the receiving function "calls it back".
+The qsort() function in the stdlib.h header file uses this technique.
+
+Quicksort is a widely used algorithm for sorting an array. To implement the sort in your program, you need only include the stdlib.h file and then write a compare function that matches the declaration used in qsort:
+void qsort(void *base, size_t num, size_t width, int (*compare)(const void *, const void *)) 
+
+To breakdown the qsort declaration:
+void *base A void pointer to the array.
+size_t num The number of elements in the array.
+size_t width The size of an element.
+int (*compare (const void *, const void *) A function pointer which has two arguments and returns 0 when the arguments have the same value, <0 when arg1 comes before arg2, and >0 when arg1 comes after arg2.
+
+The actual implementation of the compare function is up to you. It doesn't even need to have the name "compare". You have the opportunity to designate a sort from high to low or low to high, or if an array contains structure elements, you can compare member values.
+
+The following program sorts an array of ints from low to high using qsort:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int compare (const void *, const void *); 
+
+int main() {
+  int arr[5] = {52, 23, 56, 19, 4};
+  int num, width, i;
+  
+  num = sizeof(arr)/sizeof(arr[0]);
+  width = sizeof(arr[0]);
+  qsort((void *)arr, num, width, compare);
+  for (i = 0; i < 5; i++)
+    printf("%d ", arr[ i ]);
+    
+  return 0;
+}
+
+int compare (const void *elem1, const void *elem2) {
+  if ((*(int *)elem1) == (*(int *)elem2))
+    return 0;
+  else if ((*(int *)elem1) < (*(int *)elem2))
+    return -1;
+  else
+    return 1;
+}
+
+->A callback function
