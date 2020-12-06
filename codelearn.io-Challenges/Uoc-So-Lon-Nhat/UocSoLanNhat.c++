@@ -140,7 +140,7 @@ int main()
     //PrintVectorInt(SieveOfAtkin((int)sqrt(MaxOfArr(Arr))));
     //PrintVectorLong(Arr);
     Arr = largestDivisor(Arr);
-    //PrintVectorLong(Arr);
+    PrintVectorLong(Arr);
     //std::cout<<Arr[0]<<endl;
     return 0;
 }
