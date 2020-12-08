@@ -134,7 +134,7 @@ int main()
     std::vector<long long> Arr;
     for (int i = 0; i < 1000; i++)
     {
-        Arr.push_back(Max_10e12 * 3.24 - (2 * i + 1));
+        Arr.push_back(Max_10e12 - (2 * i + 1));
     }
 
     //PrintVectorInt(SieveOfAtkin((int)sqrt(MaxOfArr(Arr))));
