@@ -1,0 +1,74 @@
+Struct lồng trong Struct, ví dụ:
+
+
+#include <stdio.h>
+
+typedef struct {
+  int x;
+  int y;
+} point;
+
+typedef struct {
+  float radius;
+  point center;
+} circle; 
+
+int main() {
+    point p;
+    p.x = 3;
+    p.y = 4;
+    
+    circle c;
+    c.radius = 3.14;
+    c.center = p;
+    
+    printf("Circle radius is %.2f, center is at (%d, %d)", c.radius, c.center.x, c.center.y);
+  
+    return 0;
+}
+
+->typedef struct {
+
+  float b;
+
+} small;
+
+
+
+struct big {
+
+  int a;
+  small s;
+
+};
+
+
+con trỏ trong struct:
+
+
+->struct Point {
+
+  int x;
+
+  int y;
+
+} p1;
+
+
+
+struct Point *ptr = &p1;
+
+ptr->x = 3;
+
+ptr->y = 4;
+
+
+
+->Pointer parameters are required
+
+
+->typedef struct {
+  int x;
+  int y;
+} point;
+point points[3] = {{1, 2}, {3, 4}, {5, 6}};

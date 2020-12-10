@@ -1,0 +1,108 @@
+STRUCT:
+Một cấu trúc là một kiểu dữ liệu do người dùng định nghĩa rằng các nhóm biến của các loại dữ liệu khác nhau có liên quan. Khai báo cấu trúc bao gồm từ khóa struct , thẻ cấu trúc để tham chiếu cấu trúc và dấu ngoặc nhọn {} với danh sách các khai báo biến được gọi là thành viên . Ví dụ:
+
+struct course {
+  int id;
+  char title[40];
+  float hours; 
+}; 
+
+
+Câu lệnh struct này xác định một kiểu dữ liệu mới có tên là course có ba thành viên.
+Các thành viên cấu trúc có thể thuộc bất kỳ kiểu dữ liệu nào, bao gồm các kiểu cơ bản, chuỗi, mảng, con trỏ và thậm chí các cấu trúc khác, như bạn sẽ học trong bài học sau.
+
+->struct human {
+
+  int age;
+
+  char name[40]; 
+
+};
+
+
+chú ý:Một biến cấu trúc được lưu trữ trong một khối bộ nhớ liền kề. Các sizeof điều hành phải được sử dụng để có được số byte cần thiết cho một struct, cũng như với các kiểu dữ liệu cơ bản.
+
+
+
+->struct human {
+
+  int age;
+
+  char name[40];
+
+};
+
+struct human h1;
+
+->struct human h1;
+
+h1 = (struct human) {19, "John"};
+
+
+ví dụ:
+
+#include <stdio.h>
+#include <string.h>
+
+struct course
+{
+    int id;
+    char title[40];
+    float hours;
+};
+
+int main()
+{
+    struct course cs1 = {341279, "Intro to C++", 12.5};
+    struct course cs2;
+
+    /* initialize cs2 */
+    cs2.id = 341281;
+    strcpy(cs2.title, "Advanced C++");
+    cs2.hours = 14.25;
+
+    /* display course info */
+    printf("%d\t%s\t%4.2f\n", cs1.id, cs1.title, cs1.hours);
+    printf("%d\t%s\t%4.2f\n", cs2.id, cs2.title, cs2.hours);
+    cs2 = cs1;
+    printf("%d\t%s\t%4.2f\n", cs1.id, cs1.title, cs1.hours);
+    printf("%d\t%s\t%4.2f\n", cs2.id, cs2.title, cs2.hours);
+    return 0;
+}
+
+
+->struct human {
+
+  int age;
+
+  char name[40];
+
+};
+
+struct human h1 = {19, "John"}; 
+
+h1.age += 2;
+
+
+
+một cách khai báo gọn hơn:
+
+
+typedef struct {
+  int id;
+  char title[40];
+  float hours; 
+} course;
+
+course cs1;
+course cs2; 
+
+
+
+->typedef struct {
+
+  int age;
+
+  char name[40];
+
+} human;

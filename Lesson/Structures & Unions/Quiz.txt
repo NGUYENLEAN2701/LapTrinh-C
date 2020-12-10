@@ -1,0 +1,69 @@
+->struct time {
+
+  int minutes;
+
+  int hours;
+
+};
+
+->typedef struct {
+
+  int width;
+
+  int height;
+
+} shape;
+
+shape sh;
+
+sh.width = 3;
+
+sh.height = 4;
+
+
+->struct ship {
+
+  int x;
+
+  int y;
+
+} sh1;
+
+struct ship *ptr = &sh1;
+
+ptr->x = 3;
+
+ptr->y = 4;
+
+->union values {
+
+  int i_val;
+
+  float f_val;
+
+  char c_val;
+
+};
+
+union values val;
+
+val.c_val = 'a';
+
+->union
+ values {
+
+  int i_val;
+
+  float f_val;
+
+  char c_val;
+
+};
+
+union values nums[3];
+
+nums[0].i_val = 42;
+
+nums[1].f_val = 3.14;
+
+nums[2].c_val = 'f';

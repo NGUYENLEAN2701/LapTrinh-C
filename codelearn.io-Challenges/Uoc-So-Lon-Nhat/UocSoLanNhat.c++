@@ -17,9 +17,9 @@ std::vector<int> SieveOfAtkin(int limit)
         //cout << 3 << " ";
         Primes.push_back(3);
 
-    bool sieve[limit];
+    std::vector<bool> sieve;
     for (int i = 0; i < limit; i++)
-        sieve[i] = false;
+        sieve.push_back(false);
 
     for (int x = 1; x * x < limit; x++)
     {
@@ -28,15 +28,15 @@ std::vector<int> SieveOfAtkin(int limit)
 
             int n = (4 * x * x) + (y * y);
             if (n <= limit && (n % 12 == 1 || n % 12 == 5))
-                sieve[n] ^= true;
+                sieve[n] = sieve[n] ^ true;
 
             n = (3 * x * x) + (y * y);
             if (n <= limit && n % 12 == 7)
-                sieve[n] ^= true;
+                sieve[n] = sieve[n] ^ true;
 
             n = (3 * x * x) - (y * y);
             if (x > y && n <= limit && n % 12 == 11)
-                sieve[n] ^= true;
+                sieve[n] = sieve[n] ^ true;
         }
     }
 
@@ -51,7 +51,6 @@ std::vector<int> SieveOfAtkin(int limit)
 
     for (int a = 5; a < limit; a++)
         if (sieve[a])
-            //cout << a << " ";
             Primes.push_back(a);
 
     return Primes;
@@ -59,7 +58,7 @@ std::vector<int> SieveOfAtkin(int limit)
 
 long long UocSoLonNhat(long long Number, std::vector<int> Primes)
 {
-    for (std::vector<int>::iterator it = Primes.begin(); it != Primes.end(); ++it)
+    for (std::vector<int>::iterator it = Primes.begin(); it != Primes.end(); it++)
     {
         if (Number % (*it) == 0)
             return Number / (*it);
@@ -67,50 +66,16 @@ long long UocSoLonNhat(long long Number, std::vector<int> Primes)
     return 1;
 }
 
-long long UocSoLonNhat_Bad(long long Number)
-{
-
-    if (Number <= 2)
-        return 1;
-    else if (Number % 2 == 0)
-        return Number / 2;
-    else if (Number % 3 == 0)
-        return Number / 3;
-    else
-    {
-        long long i = 5;
-        while (i * i <= Number)
-        {
-            if (Number % i == 0)
-                return Number / i;
-            if (Number % (i + 2) == 0)
-                return Number / (i + 2);
-            i += 6;
-        }
-        return 1;
-    }
-}
-
 std::vector<long long> largestDivisor(std::vector<long long> arr)
 {
-    int MaxPrime = 1 + sqrt(*max_element(arr.begin(), arr.end()));
-    //std::cout<<MaxPrime<<endl;
-    if (MaxPrime > 1800000)
-    {
-        for (std::vector<long long>::iterator it = arr.begin(); it != arr.end(); ++it)
-        {
-            *it = UocSoLonNhat_Bad(*it);
-        }
-    }
-    else
-    {
-        std::vector<int> Primes = SieveOfAtkin(MaxPrime);
-        for (std::vector<long long>::iterator it = arr.begin(); it != arr.end(); ++it)
-        {
-            *it = UocSoLonNhat(*it, Primes);
-        }
-    }
+    int MaxPrime = sqrt(*max_element(arr.begin(), arr.end()));
 
+    std::vector<int> Primes = SieveOfAtkin(MaxPrime);
+    for (std::vector<long long>::iterator it = arr.begin(); it != arr.end(); it++)
+    {
+        //if(*it<=1000000000000)
+        *it = UocSoLonNhat(*it, Primes);
+    }
     return arr;
 }
 
@@ -137,10 +102,10 @@ int main()
         Arr.push_back(Max_10e12 - (2 * i + 1));
     }
 
-    //PrintVectorInt(SieveOfAtkin((int)sqrt(MaxOfArr(Arr))));
+    PrintVectorInt(SieveOfAtkin(1000));
     //PrintVectorLong(Arr);
     Arr = largestDivisor(Arr);
-    PrintVectorLong(Arr);
+    //PrintVectorLong(Arr);
     //std::cout<<Arr[0]<<endl;
     return 0;
 }
