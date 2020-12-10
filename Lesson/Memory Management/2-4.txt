@@ -1,0 +1,61 @@
+The malloc Function:
+
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int *ptr;
+    ptr = malloc(10 * sizeof(*ptr)); /* a block of 10 ints */
+    if (ptr != NULL)
+    {
+        *(ptr + 2) = 50; /* assign 50 to third int */
+    }
+    printf("3rd elem equals to %d", *(ptr + 2));
+    return 0;
+}
+
+malloc trả về một con trỏ đến vùng nhớ được cấp phát.
+Lưu ý rằng sizeof đã được áp dụng cho * ptr thay vì int, làm cho mã mạnh hơn nếu khai báo * ptr được thay đổi thành kiểu dữ liệu khác sau này.
+
+->int *ptr = malloc(10);
+
+The allocated memory is contiguous and can be treated as an array. Instead of using brackets [ ] to refer to elements, pointer arithmetic is used to traverse the array. You are advised to use + to refer to array elements. Using ++ or += changes the address stored by the pointer.
+
+If the allocation is unsuccessful, NULL is returned. Because of this, you should include code to check for a NULL pointer.
+
+
+Bộ nhớ được cấp phát là liền kề và có thể được coi như một mảng . Thay vì sử dụng dấu ngoặc [] để tham chiếu đến các phần tử, số học con trỏ được sử dụng để duyệt qua mảng. Bạn nên sử dụng + để tham chiếu đến các phần tử mảng. Sử dụng ++ hoặc + = thay đổi địa chỉ được lưu trữ bởi con trỏ.
+Nếu phân bổ không thành công, NULL được trả về. Do đó, bạn nên bao gồm mã để kiểm tra một con trỏ NULL.
+
+A simple two-dimensional array requires (rows*columns)*sizeof(datatype) bytes of memory.
+
+->The allocated memory is: Contiguous
+
+
+
+
+The free Function
+
+The free() function is a memory management function that is called to release memory. By freeing memory, you make more available for use later in your program.
+
+#include <stdio.h>
+#include <stdlib.h>
+int main()
+{
+    int *ptr;
+    ptr = malloc(10 * sizeof(*ptr)); /* a block of 10 ints */
+    if (ptr != NULL)
+    {
+        *(ptr + 2) = 50; /* assign 50 to third int */
+    }
+    printf("3rd elem equals to %d", *(ptr + 2));
+
+    free(ptr);
+    printf("3rd elem equals to %d", *(ptr + 2));
+    return 0;
+}
+
+->int * ptr = malloc(10);
+
+free(ptr);

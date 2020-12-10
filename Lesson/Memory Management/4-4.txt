@@ -1,0 +1,52 @@
+Allocating Memory for Strings
+
+Phân bổ bộ nhớ cho chuỗi
+
+
+Khi cấp phát bộ nhớ cho một con trỏ chuỗi, bạn có thể muốn sử dụng độ dài chuỗi thay vì toán tử sizeof để tính toán byte.
+Hãy xem xét chương trình sau:
+
+char str20[20];
+char *str = NULL;
+strcpy(str20, "12345");
+str = malloc(strlen(str20) + 1); ​
+strcpy(str, str20);
+printf("%s", str);
+
+Cách tiếp cận này là quản lý bộ nhớ tốt hơn vì bạn không phân bổ nhiều không gian hơn mức cần thiết cho một con trỏ. Khi sử dụng strlen để xác định số byte cần thiết cho một chuỗi, hãy đảm bảo bao gồm thêm một byte cho ký tự NULL '\0'.
+Một char luôn là một byte, vì vậy không cần nhân yêu cầu bộ nhớ với sizeof (char).
+
+->char *str = NULL;
+str = malloc(42);
+
+
+Mảng Động:
+typedef struct {
+  int *elements;
+  int size;
+  int cap;
+} dyn_array;
+
+dyn_array arr;
+
+/* initialize array */
+arr.size = 0;
+arr.elements = calloc(1, sizeof(*arr.elements) );
+arr.cap = 1;  /* room for 1 element */ 
+
+
+mở rộng:
+arr.elements = realloc(arr.elements, (5 + arr.cap) * sizeof(*arr.elements));
+if (arr.elements != NULL)
+  arr.cap += 5; /* increase capacity */ 
+
+if (arr.size < arr.cap) {
+  arr.elements[arr.size] = 50;
+  arr.size++;
+} else {
+  printf("Need to expand the array.");
+}
+
+->int* arr = malloc(4 * sizeof(int));
+
+arr = realloc(arr, 8 * sizeof(int));
