@@ -1,0 +1,47 @@
+->#define TRIPLE(x) (x) * 3
+
+
+
+int num = 42;
+
+printf("%d", TRIPLE(num));
+
+->#ifdef TRIPLE
+
+#define SQR(x) (x) * (x)
+
+#else
+ 
+
+#define TRIPLE(x) (x) * 3
+
+#endif
+
+
+
+->The preprocessor acts: before compilation
+
+
+
+->What is the output of this code?
+#include <stdio.h>
+#define T 42
+int main()
+{
+   int T = 8;
+   printf("%d ", T);
+   return 0;
+}
+//Compile Error
+
+
+->#include <stdio.h>
+#define sqr(x) x *x
+
+int main()
+{
+    int x = 16 / sqr(4); //----> 16/4*4 = 16
+    printf("%d", x);
+    return 0;
+}
+//16

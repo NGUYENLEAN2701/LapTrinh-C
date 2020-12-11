@@ -62,3 +62,4 @@ Bạn có thể trả về bất kỳ giá trị nào thông qua câu lệnh tho
 if (num == 0) {  
 exit(4);
 }
+

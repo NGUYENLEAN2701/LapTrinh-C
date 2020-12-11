@@ -1,0 +1,154 @@
+
+Using errno
+
+
+Some library functions, such as fopen(), set an error code when they do not execute as expected. The error code is set in a global variable named errno, which is defined in the errno.h header file. When using errno you should set it to 0 before calling a library function.
+
+To output the error code stored in errno, you use fprintf to print to the stderr file stream, the standard error output to the screen. Using stderr is a matter of convention and a good programming practice.
+
+You can output the errno through other means, but it will be easier to keep track of your exception handling if you only use stderr for error messages.
+
+To use errno, you need to declare it with the statement extern int errno; at the top of your program (or you can include the errno.h header file).
+For example:
+
+#include <stdio.h>
+#include <stdlib.h>
+//#include <errno.h>
+
+extern int errno;
+
+int main()
+{
+    FILE *fptr;
+
+    errno = 0;
+    fptr = fopen("abctest.txt", "r");
+    if (fptr == NULL)
+    {
+        fprintf(stderr, "Error opening file. Error code: %d\n", errno);
+        exit(EXIT_FAILURE);
+    }
+
+    fclose(fptr);
+    return 0;
+}
+
+bản dịch:
+
+
+Một số hàm thư viện, chẳng hạn như fopen (), đặt mã lỗi khi chúng không thực thi như mong đợi. Mã lỗi được đặt trong một biến chung có tên là errno , được định nghĩa trong tệp tiêu đề errno.h . Khi sử dụng errno, bạn nên đặt nó thành 0 trước khi gọi một hàm thư viện. 
+
+Để xuất ra mã lỗi được lưu trong errno, bạn sử dụng fprintf để in ra luồng tệp stderr , kết quả lỗi chuẩn xuất ra màn hình. Sử dụng stderr là một vấn đề của quy ước và là một thực hành lập trình tốt. 
+
+Bạn có thể xuất lỗi thông qua các phương tiện khác, nhưng sẽ dễ dàng hơn để theo dõi việc xử lý ngoại lệ của bạn nếu bạn chỉ sử dụng stderr cho các thông báo lỗi. 
+
+Để sử dụng errno, bạn cần khai báo nó với câu lệnh extern int errno;
+ở đầu chương trình của bạn (hoặc bạn có thể bao gồm tệp tiêu đề errno.h ).
+
+
+->#include <errno.h>
+
+The perror and strerror Functions
+
+
+When a library function sets errno, a cryptic error number is assigned. For a more descriptive message about the error, you can use perror(). You can also obtain the message using strerror() in the string.h header file, which returns a pointer to the message text.
+
+perror() must include a string that will precede the actual error message. Typically, there is no need for both perror() and strerror() for the same error, but both are used in the program below for demonstration purposes:
+
+FILE *fptr;
+errno = 0;
+
+fptr = fopen("c:\\nonexistantfile.txt", "r");
+if (fptr == NULL) {
+  perror("Error");
+  fprintf(stderr, "%s\n", strerror(errno));
+  exit(EXIT_FAILURE);
+} 
+
+
+
+There are more than a hundred error codes. Use these statements to list them:
+
+
+for (int x = 0; x < 135; x++)
+  fprintf(stderr, "%d: %s\n", x, strerror(x)); 
+
+
+
+->FILE* fptr = fopen("test.txt", "r");
+
+if (fptr == NULL) {perror("Error");
+  exit(EXIT_FAILURE);
+}
+
+
+
+EDOM and ERANGE Error Codes
+
+
+Some of the mathematical functions in the math.h library set errno to the defined macro value EDOM when a domain is out of range.
+Similarly, the ERANGE macro value is used when there is a range error.
+For example:
+
+float k = -5;
+float num = 1000;
+float result;
+
+errno = 0;
+result = sqrt(k);
+if (errno == 0)
+  printf("%f ", result);
+else if (errno == EDOM)
+  fprintf(stderr, "%s\n", strerror(errno));
+
+errno = 0;
+result = exp(num);
+if (errno == 0)
+  printf("%f ", result);
+else if (errno == ERANGE)
+  fprintf(stderr, "%s\n", strerror(errno));
+
+->What is the error code specifying that the domain is out of range? EDOM
+
+The feof and ferror Functions
+
+
+In addition to checking for a NULL file pointer and using errno, the feof() and ferror() functions can be used for determining file I/O errors:
+feof(fp) Returns a nonzero value if the end of stream has been reached, 0 otherwise. feof also sets EOF.
+ferror(fp) Returns a nonzero value if there is an error, 0 for no error.
+
+The following program incorporates several exception handling techniques:
+
+FILE *fptr;
+int c;
+
+errno = 0;
+
+fptr = fopen("myfile.txt", "r");
+if (fptr == NULL) {
+  fprintf(stderr, "Error opening file. %s\n", strerror(errno));
+  exit(EXIT_FAILURE);
+}
+
+while ((c = getc(fptr)) != EOF) /* read the rest of the file */
+  printf("%c", c);
+
+if (ferror(fptr)) {
+  printf("I/O error reading file.");
+  exit(EXIT_FAILURE);
+}
+else if (feof(fptr)) {
+  printf("End of file reached.");
+} 
+
+
+Program output will vary. But if the file opens properly and the program completes reading the entire file, then the following message displays: "End of file reached."
+
+
+->FILE* fptr = fopen("test", "r");
+
+if (feof(fptr)) {
+
+  printf("End of file reached").
+
+}
