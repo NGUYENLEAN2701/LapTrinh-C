@@ -9,7 +9,7 @@ int main()
 
     /* myfile.txt: Inventory\n100 Widget 0.29\nEnd of List */
 
-    fptr = fopen("myfile.txt", "r");
+    fptr = fopen("test.txt", "r");
 
     fgets(buffer, 200, fptr); /* read a line */
     printf("%s\n", buffer);

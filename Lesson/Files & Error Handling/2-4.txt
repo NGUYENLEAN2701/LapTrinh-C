@@ -1,0 +1,127 @@
+Binary File I/O
+
+
+Writing only characters and strings to a file can become tedious when you have an array or structure. To write entire blocks of memory to a file, there are the following binary functions:
+
+Binary file mode options for the fopen() function are:
+- rb open for reading (file must exist)
+- wb open for writing (file need not exist)
+- ab open for append (file need not exist)
+- rb+ open for reading and writing from beginning
+- wb+ open for reading and writing, overwriting file
+- ab+ open for reading and writing, appending to file
+
+fwrite(ptr, item_size, num_items, fp) Writes num_items items of item_size size from pointer ptr to the file pointed to by file pointer fp.
+
+fread(ptr, item_size, num_items, fp) Reads num_items items of item_size size from the file pointed to by file pointer fp into memory pointed to by ptr.
+
+fclose(fp) Closes file opened with file fp, returning 0 if close was successful. EOF is returned if there is an error in closing.
+
+->rb
+
+ví dụ: 
+
+#include <stdio.h>
+
+int main() {
+  FILE *fptr;
+  int arr[10];
+  int x[10];
+  int k;
+
+  /* generate array of numbers */
+  for (k = 0; k < 10; k++)
+    arr[k] = k;
+
+  /* write array to file */
+  fptr = fopen("datafile.bin", "wb");
+  fwrite(arr, sizeof(arr[0]), sizeof(arr)/sizeof(arr[0]), fptr);
+  fclose(fptr);
+
+  /* read array from file */
+  fptr = fopen("datafile.bin", "rb");
+  fread(x, sizeof(arr[0]), sizeof(arr)/sizeof(arr[0]), fptr);
+  fclose(fptr);
+
+  /* print array */
+  for (k = 0; k < 10; k++)
+    printf("%d", x[k]);
+  return 0;
+}
+
+
+->FILE* fptr;
+
+int arr[5] = {1, 2, 3, 4, 5};
+
+fptr = fopen("datafile.bin", "wb");
+
+fwrite(arr, sizeof(arr[0]), sizeof(arr)/sizeof(arr[0]), fptr);
+
+fclose(fptr);
+
+
+
+Controlling the File Pointer
+
+
+There are functions in stdio.h for controlling the location of the file pointer in a binary file:
+ftell(fp) Returns a long int value corresponding to the fp file pointer position in number of bytes from the start of the file.
+
+fseek(fp, num_bytes, from_pos) Moves the fp file pointer position by num_bytes bytes relative to position from_pos, which can be one of the following constants:
+SEEK_SET start of file
+SEEK_CUR current position
+SEEK_END end of file
+
+The following program reads a record from a file of structures:
+
+#include <stdio.h>
+#include <string.h>
+
+typedef struct
+{
+    int id;
+    char name[20];
+} item;
+
+int main()
+{
+    FILE *fptr;
+    item first, second, secondf;
+
+    /* create records */
+    first.id = 10276;
+    strcpy(first.name, "Widget");
+    second.id = 11786;
+    strcpy(second.name, "Gadget");
+
+    /* write records to a file */
+    fptr = fopen("info.dat", "wb");
+    fwrite(&first, 1, sizeof(first), fptr);
+    fwrite(&second, 1, sizeof(second), fptr);
+    fclose(fptr);
+
+    /* file contains 2 records of type item */
+    fptr = fopen("info.dat", "rb");
+
+    /* seek second record */
+    fseek(fptr, 1 * sizeof(item), SEEK_SET);
+    fread(&secondf, 1, sizeof(item), fptr);
+    printf("%d  %s\n", secondf.id, secondf.name);
+    fclose(fptr);
+    return 0;
+}
+
+
+
+->typedef struct {
+
+  int id;
+
+  char name[20];
+
+} item;
+
+FILE* fptr = fopen("info.dat", "rb");
+
+fseek(fptr, 1*sizeof(item), SEEK_SET);

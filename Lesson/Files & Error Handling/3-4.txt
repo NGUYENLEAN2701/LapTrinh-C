@@ -1,0 +1,64 @@
+
+Exception Handling
+
+
+Central to good programming practices is using error handling techniques. Even the most solid coding skills may not keep a program from crashing should you forget to include exception handling.
+
+An exception is any situation that causes your program to stop normal execution. Exception handling, also called error handling, is an approach to processing runtime errors.
+
+C does not explicitly support exception handling, but there are ways to manage errors:
+- Write code to prevent the errors in the first place. You can't control user input, but you can check to be sure that the user entered valid input. When performing division, take the extra step to ensure that division by 0 won't occur.
+- Use the exit statement to gracefully end program execution. You may not be able to control if a file is available for reading, but you don't need to allow the problem to crash your program.
+
+Use errno, perror(), and strerror() to identify errors through error codes.
+
+
+bản dịch: 
+
+Trung tâm để thực hành lập trình tốt là sử dụng các kỹ thuật xử lý lỗi. Ngay cả những kỹ năng viết mã vững chắc nhất cũng có thể không giữ cho một chương trình bị treo nếu bạn quên bao gồm xử lý ngoại lệ.
+
+Một ngoại lệ là bất kỳ tình huống nào khiến chương trình của bạn ngừng thực thi bình thường. Xử lý ngoại lệ , còn được gọi là xử lý lỗi , là một cách tiếp cận để xử lý lỗi thời gian chạy. 
+
+C không hỗ trợ rõ ràng việc xử lý ngoại lệ, nhưng có những cách để quản lý lỗi:
+
+    - Viết mã để ngăn chặn các lỗi ngay từ đầu. Bạn không thể kiểm soát thông tin nhập của người dùng, nhưng bạn có thể kiểm tra để đảm bảo rằng người dùng đã nhập thông tin nhập hợp lệ. Khi thực hiện phép chia, hãy thực hiện thêm bước để đảm bảo rằng phép chia cho 0 sẽ không xảy ra.
+
+    - Sử dụng câu lệnh exit để kết thúc chương trình một cách duyên dáng. Bạn có thể không kiểm soát được liệu tệp có sẵn để đọc hay không, nhưng bạn không cần cho phép sự cố làm hỏng chương trình của mình.
+
+Sử dụng errno, perror () và strerror () để xác định lỗi thông qua mã lỗi.
+
+
+->What is an exception? An exception is any situation that causes the program to stop normal execution.
+
+
+
+The exit command immediately stops the execution of a program and sends an exit code back to the calling process. For example, if a program is called by another program, then the calling program may need to know the exit status.
+
+Using exit to avoid a program crash is a good practice because it closes any open file connections and processes.
+
+You can return any value through an exit statement, but 0 for success and -1 for failure are typical. The predefined stdlib.h macros EXIT_SUCCESS and EXIT_FAILURE are also commonly used.
+For example:
+
+int x = 10;
+int y = 0;
+
+if (y != 0)
+  printf("x / y = %d", x/y);
+else {
+  printf("Divisor is 0. Program exiting.");
+  exit(EXIT_FAILURE);
+} 
+
+bản dịch:
+Lệnh thoát ngay lập tức dừng việc thực thi một chương trình và gửi lại mã thoát cho quá trình gọi. Ví dụ, nếu một chương trình được gọi bởi một chương trình khác, thì chương trình đang gọi có thể cần biết trạng thái thoát.
+
+Sử dụng exit để tránh sự cố chương trình là một phương pháp hay vì nó đóng mọi quá trình và kết nối tệp đang mở.
+
+
+Bạn có thể trả về bất kỳ giá trị nào thông qua câu lệnh thoát, nhưng 0 cho thành công và -1 cho thất bại là điển hình. Các macro stdlib.h được xác định trước EXIT_SUCCESS và EXIT_FAILURE cũng thường được sử dụng.
+
+
+->int num = 0;
+if (num == 0) {  
+exit(4);
+}
